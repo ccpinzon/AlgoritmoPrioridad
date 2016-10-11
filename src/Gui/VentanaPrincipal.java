@@ -57,6 +57,8 @@ public class VentanaPrincipal extends JFrame {
 
     //Leer CSV
     public void btnCsvFunc() throws IOException {
+        refrescarTablaDEsordenada();
+        arrayProcesos.clear();
 
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(this);
@@ -69,7 +71,7 @@ public class VentanaPrincipal extends JFrame {
             System.out.println(path);
 
             String line = "";
-            String cvsSplitBy = ",";
+            String cvsSplitBy = ";";
             try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 
                 //System.out.println(br.lines().count());
@@ -93,8 +95,6 @@ public class VentanaPrincipal extends JFrame {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
             refrescarTablaDEsordenada();
 
             for (int i = 0; i < arrayProcesos.size(); i++) {
@@ -110,10 +110,43 @@ public class VentanaPrincipal extends JFrame {
 
 
         }
+
+        refrescarTablaOrdenada();
     }
 
     public void btnCalcularFunc() {
+
         ArrayList<Proceso> arrayOrdenado = eq1.Ordenar();
+        refrescarTablaOrdenada();
+        //System.out.println("Ordenado \n");
+        int vecRetorno[] = eq1.tiempoRetorno(arrayOrdenado);
+        int vecEspera [] =  eq1.tiempoEspera(arrayOrdenado);
+
+        for (int i = 0; i < arrayOrdenado.size(); i++) {
+            String trab = arrayOrdenado.get(i).getTrabajo();
+            int raf = arrayOrdenado.get(i).getRafaga();
+            int tiem = arrayOrdenado.get(i).getTiempoLlegada();
+            int prio = arrayOrdenado.get(i).getPrioridad();
+
+            int retor = 0;
+            if (i == 0){
+                retor = vecRetorno[0];
+            }else {
+                retor =vecRetorno[i+1];
+            }
+
+            Object data[] = {(i+1),trab,raf,tiem,prio,retor,vecEspera[i]};
+
+            panelMedio.getModeloTablaProcesoOrdenado().insertRow(i,data);
+        }
+
+        String tem = String.valueOf(eq1.tiempoEsperaMedio(vecEspera));
+        String trm = String.valueOf(eq1.tiempoRetornoMedio(vecRetorno));
+        panelInferior.getLbTem().setText(tem);
+        panelInferior.getLbTrm().setText(trm);
+
+
+
     }
 
 // METHODS REFRESH TABLES
@@ -122,6 +155,12 @@ public class VentanaPrincipal extends JFrame {
                 panelMedio.getModeloTablaProceso().removeRow(0);
             }
         }
+
+    public void refrescarTablaOrdenada(){
+        while(panelMedio.getModeloTablaProcesoOrdenado().getRowCount() !=0){
+            panelMedio.getModeloTablaProcesoOrdenado().removeRow(0);
+        }
+    }
 
 
 

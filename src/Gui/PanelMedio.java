@@ -46,7 +46,7 @@ public class PanelMedio extends JPanel {
 
 
         pn2.setBorder(new TitledBorder("Tabla de procesos Ordenada: "));
-        String[]  ColsProcesosOrdenado = {"Orden","Trabajo","Rafaga CPU","Tiempo de llegada","Prioridad","Tiempo Espera","Tiempo de retorno"};
+        String[]  ColsProcesosOrdenado = {"Orden","Trabajo","Rafaga CPU","Tiempo de llegada","Prioridad","Tiempo de retorno","Tiempo Espera"};
         modeloTablaProcesoOrdenado = new DefaultTableModel(ColsProcesosOrdenado,0);
         tablaProcesosOrdenada = new JTable(modeloTablaProcesoOrdenado);
         tablaProcesosOrdenada.setBorder(new LineBorder(Color.BLACK));
