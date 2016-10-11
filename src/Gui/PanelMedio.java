@@ -1,6 +1,7 @@
 package Gui;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -40,11 +41,16 @@ public class PanelMedio extends JPanel {
         String[] ColsProcesos = {"Trabajo","Rafaga CPU","Tiempo de llegada","Prioridad"};
         modeloTablaProceso = new DefaultTableModel(ColsProcesos,0);
         tablaProcesos = new JTable(modeloTablaProceso);
+        tablaProcesos.setBorder(new LineBorder(Color.BLACK));
+        tablaProcesos.setGridColor(Color.black);
+
 
         pn2.setBorder(new TitledBorder("Tabla de procesos Ordenada: "));
         String[]  ColsProcesosOrdenado = {"Orden","Trabajo","Rafaga CPU","Tiempo de llegada","Prioridad","Tiempo Espera","Tiempo de retorno"};
         modeloTablaProcesoOrdenado = new DefaultTableModel(ColsProcesosOrdenado,0);
         tablaProcesosOrdenada = new JTable(modeloTablaProcesoOrdenado);
+        tablaProcesosOrdenada.setBorder(new LineBorder(Color.BLACK));
+        tablaProcesosOrdenada.setGridColor(Color.black);
 
     }
 

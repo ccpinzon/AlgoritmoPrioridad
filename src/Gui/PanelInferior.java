@@ -33,7 +33,12 @@ public class PanelInferior extends JPanel{
 
 
         btAddCsv = new JButton("Agregar CSV");
+        btAddCsv.setActionCommand(GestionEventos.BTN_CSV);
+        btAddCsv.addActionListener(ventanaPrincipal.getGestionEventos());
+
         btCalcular = new JButton("Calcular");
+        btCalcular.setActionCommand(GestionEventos.BTN_CALCULAR);
+        btCalcular.addActionListener(ventanaPrincipal.getGestionEventos());
         btGant = new JButton("Diagrama de Gantt");
 
     }
