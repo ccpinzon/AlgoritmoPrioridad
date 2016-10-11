@@ -12,7 +12,7 @@ public class VentanaPrincipal extends JFrame {
     private PanelInferior panelInferior;
 
     public VentanaPrincipal()  {
-        this.setSize(600,400);
+        this.setSize(800,600);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setTitle("Procesos");
         this.setLayout(new BorderLayout());
@@ -37,4 +37,19 @@ public class VentanaPrincipal extends JFrame {
         v.setVisible(true);
     }
 
+    public PanelMedio getPanelMedio() {
+        return panelMedio;
+    }
+
+    public void setPanelMedio(PanelMedio panelMedio) {
+        this.panelMedio = panelMedio;
+    }
+
+    public PanelInferior getPanelInferior() {
+        return panelInferior;
+    }
+
+    public void setPanelInferior(PanelInferior panelInferior) {
+        this.panelInferior = panelInferior;
+    }
 }

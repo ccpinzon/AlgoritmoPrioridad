@@ -46,9 +46,6 @@ public class PanelMedio extends JPanel {
         modeloTablaProcesoOrdenado = new DefaultTableModel(ColsProcesosOrdenado,0);
         tablaProcesosOrdenada = new JTable(modeloTablaProcesoOrdenado);
 
-
-
-
     }
 
     private void addComponents() {
@@ -58,5 +55,21 @@ public class PanelMedio extends JPanel {
         this.add(pn1);
         this.add(pn2);
 
+    }
+
+    public DefaultTableModel getModeloTablaProceso() {
+        return modeloTablaProceso;
+    }
+
+    public void setModeloTablaProceso(DefaultTableModel modeloTablaProceso) {
+        this.modeloTablaProceso = modeloTablaProceso;
+    }
+
+    public DefaultTableModel getModeloTablaProcesoOrdenado() {
+        return modeloTablaProcesoOrdenado;
+    }
+
+    public void setModeloTablaProcesoOrdenado(DefaultTableModel modeloTablaProcesoOrdenado) {
+        this.modeloTablaProcesoOrdenado = modeloTablaProcesoOrdenado;
     }
 }
